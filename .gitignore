@@ -1,3 +1,5 @@
+.vs
+out/
 bin/
 *.sublime-project
 *.sublime-workspace
