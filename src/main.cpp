@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 		.required()
 		.help("The file where to save the result");
 
-	argparse::ArgumentParser program("alpha");
+	argparse::ArgumentParser program("alpha", "1.0.0");
 
 	program.add_subparser(cmd_bleed);
 	program.add_subparser(cmd_rm);
