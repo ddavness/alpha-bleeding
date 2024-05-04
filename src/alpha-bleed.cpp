@@ -3,8 +3,6 @@
 #include <vector>
 #include <stdint.h>
 
-#include "png.h"
-
 void alpha_bleeding(unsigned char *image, int width, int height)
 {
 	const size_t N = width * height;

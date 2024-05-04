@@ -2,8 +2,6 @@
 #include <fstream>
 #include <cstdlib>
 
-#include "png.h"
-
 void alpha_set(unsigned char* image, int width, int height, unsigned char alpha) {
 	const size_t N = 4 * width * height;
 
