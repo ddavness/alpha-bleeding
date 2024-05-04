@@ -8,7 +8,7 @@ unsigned char *png_load(const char *path, int *width, int *height, int *channels
 	FILE *file = fopen(path, "rb");
 
 	if (!file)
-		return 0;
+		return nullptr;
 
 	size_t headerSize = 8;
 	unsigned char header[8];
@@ -17,7 +17,7 @@ unsigned char *png_load(const char *path, int *width, int *height, int *channels
 	if (png_sig_cmp(header, 0, headerSize))
 	{
 		fclose(file);
-		return 0;
+		return nullptr;
 	}
 
 	png_structp png = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
@@ -25,7 +25,7 @@ unsigned char *png_load(const char *path, int *width, int *height, int *channels
 	if (!png)
 	{
 		fclose(file);
-		return 0;
+		return nullptr;
 	}
 
 	png_infop info = png_create_info_struct(png);
@@ -34,7 +34,7 @@ unsigned char *png_load(const char *path, int *width, int *height, int *channels
 	{
 		png_destroy_read_struct(&png, NULL, NULL);
 		fclose(file);
-		return 0;
+		return nullptr;
 	}
 
 	png_infop info_end = png_create_info_struct(png);
@@ -43,14 +43,14 @@ unsigned char *png_load(const char *path, int *width, int *height, int *channels
 	{
 		png_destroy_read_struct(&png, &info, NULL);
 		fclose(file);
-		return 0;
+		return nullptr;
 	}
 
 	if (setjmp(png_jmpbuf(png)))
 	{
 		png_destroy_read_struct(&png, &info, &info_end);
 		fclose(file);
-		return 0;
+		return nullptr;
 	}
 
 	png_init_io(png, file);
@@ -65,7 +65,7 @@ unsigned char *png_load(const char *path, int *width, int *height, int *channels
 	{
 		png_destroy_read_struct(&png, &info, &info_end);
 		fclose(file);
-		return 0;
+		return nullptr;
 	}
 
 	png_bytep *rows = png_get_rows(png, info);
