@@ -11,27 +11,15 @@ if(MSVC)
 endif()
 
 find_package(PNG REQUIRED)
+find_package(argparse REQUIRED)
 
 add_executable(
-    alpha-bleeding
-    src/alpha-bleeding.cpp
-    src/png.cpp
-)
-
-target_link_libraries(alpha-bleeding PRIVATE PNG::PNG)
-
-add_executable(
-    alpha-remove
-    src/alpha-remove.cpp
-    src/png.cpp
-)
-
-target_link_libraries(alpha-remove PRIVATE PNG::PNG)
-
-add_executable(
-    alpha-set
+    alpha
+    src/alpha-bleed.cpp
     src/alpha-set.cpp
+    src/main.cpp
     src/png.cpp
 )
 
-target_link_libraries(alpha-set PRIVATE PNG::PNG)
+target_link_libraries(alpha PRIVATE PNG::PNG)
+target_link_libraries(alpha PRIVATE argparse::argparse)
