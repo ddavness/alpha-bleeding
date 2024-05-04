@@ -26,6 +26,16 @@
           "name": "VCPKG_TARGET_TRIPLET",
           "value": "x64-windows-static",
           "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS_MINSIZEREL",
+          "value": "/MT /O1 /Ob1 /DNDEBUG",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL",
+          "value": "/NODEFAULTLIB:library",
+          "type": "STRING"
         }
       ]
     }
